@@ -18,5 +18,9 @@ Route::get('/', function () {
     return view('homepage');
 });
 
+// User related routes
 Route::get('/login', [UserController::class, "showLoginForm"]);
 Route::post('/login', [UserController::class, "login"]);
+Route::get('/register', [UserController::class, "showRegisterForm"]);
+Route::post('/register', [UserController::class, "create"]);
+Route::post('/logout', [UserController::class, "logout"]);
