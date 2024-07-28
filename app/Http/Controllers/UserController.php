@@ -8,6 +8,14 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    public function showCorrectHomepage() {
+        if(auth()->check()) {
+            return view('dashboard');
+        }
+
+        return view('homepage');
+    }
+
     public function showLoginForm() {
         return view("login");
     }

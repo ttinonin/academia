@@ -15,20 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+Route::get('/', [UserController::class, "showCorrectHomepage"]);
 
 // User related routes
 Route::get('/login', [UserController::class, "showLoginForm"]);
 Route::post('/login', [UserController::class, "login"]);
 Route::get('/register', [UserController::class, "showRegisterForm"]);
 Route::post('/register', [UserController::class, "create"]);
-Route::post('/logout', [UserController::class, "logout"]);
+Route::post('/logout', [UserController::class, "logout"])->middleware('mustBeLoggedIn');
 
 // Exercises related routes
-Route::get('/create-exercise', [ExerciseController::class, "showCreateForm"]);
-Route::post('/exercise', [ExerciseController::class, "create"]);
-Route::get('/exercises', [ExerciseController::class, "read"]);
-Route::get('/exercise/{exercise:id}', [ExerciseController::class, "readSingle"]);
-Route::delete('/exercise/{exercise:id}', [ExerciseController::class, "delete"]);
+Route::get('/create-exercise', [ExerciseController::class, "showCreateForm"])->middleware('mustBeLoggedIn');
+Route::post('/exercise', [ExerciseController::class, "create"])->middleware('mustBeLoggedIn');
+Route::get('/exercises', [ExerciseController::class, "read"])->middleware('mustBeLoggedIn');
+Route::get('/exercise/{exercise:id}', [ExerciseController::class, "readSingle"])->middleware('mustBeLoggedIn');
+Route::delete('/exercise/{exercise:id}', [ExerciseController::class, "delete"])->middleware('mustBeLoggedIn');

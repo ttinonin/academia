@@ -9,7 +9,7 @@
 </head>
 <body class="bg-zinc-900 text-white">
   
-  <div class="m-3">
+  <div class="m-3 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <x-header/>
       <div class="bg-zinc-700 rounded-lg p-3 mt-2">
         @if(session()->has('success'))
