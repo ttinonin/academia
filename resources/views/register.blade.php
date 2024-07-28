@@ -1,4 +1,4 @@
-<x-layout>
+<x-center-layout>
     <div class="flex items-center justify-center ">
         <div class="bg-zinc-600 p-3 mt-6 rounded-lg min-w-80">
             <h1 class="font-bold text-2xl text-center">Register</h1>
@@ -60,4 +60,4 @@
             </form>
         </div>
     </div>
-</x-layout>
+</x-center-layout>

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('workout_id')->references('id')->on("workout");
+            $table->foreign('workout_id')->references('id')->on("workouts");
             $table->foreign('exercise_id')->references('id')->on("exercises");
         });
     }

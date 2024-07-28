@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,5 @@ Route::post('/login', [UserController::class, "login"]);
 Route::get('/register', [UserController::class, "showRegisterForm"]);
 Route::post('/register', [UserController::class, "create"]);
 Route::post('/logout', [UserController::class, "logout"]);
+
+Route::get('/create-exercise', [ExerciseController::class, "showCreateForm"]);
