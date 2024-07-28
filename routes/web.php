@@ -26,4 +26,7 @@ Route::get('/register', [UserController::class, "showRegisterForm"]);
 Route::post('/register', [UserController::class, "create"]);
 Route::post('/logout', [UserController::class, "logout"]);
 
+// Exercises related routes
 Route::get('/create-exercise', [ExerciseController::class, "showCreateForm"]);
+Route::post('/exercise', [ExerciseController::class, "create"]);
+Route::get('/exercises', [ExerciseController::class, "read"]);

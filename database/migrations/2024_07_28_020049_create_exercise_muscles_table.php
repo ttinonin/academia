@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger("muscle_id");
             $table->timestamps();
 
-            $table->foreign('muscle_id')->references('id')->on("muscles");
-            $table->foreign('exercise_id')->references('id')->on("exercises");
+            $table->foreign('muscle_id')->references('id')->on("muscles")->onDelete("cascade");
+            $table->foreign('exercise_id')->references('id')->on("exercises")->onDelete("cascade");
         });
     }
 
