@@ -30,3 +30,5 @@ Route::post('/logout', [UserController::class, "logout"]);
 Route::get('/create-exercise', [ExerciseController::class, "showCreateForm"]);
 Route::post('/exercise', [ExerciseController::class, "create"]);
 Route::get('/exercises', [ExerciseController::class, "read"]);
+Route::get('/exercise/{exercise:id}', [ExerciseController::class, "readSingle"]);
+Route::delete('/exercise/{exercise:id}', [ExerciseController::class, "delete"]);

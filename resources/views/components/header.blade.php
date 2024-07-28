@@ -3,8 +3,13 @@
 
     @if (auth()->check())
         <ul class="flex flex-row">
-            <li class="block m-2 cursor-pointer">Workouts</li>
-            <li class="block m-2 cursor-pointer text-red-500">Logout</li>
+            <a href=""><li class="block m-2 cursor-pointer">Workouts</li></a>
+            <a href="/exercises"><li class="block m-2 cursor-pointer">Exercises</li></a>
+            
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit"><li class="block m-2 cursor-pointer text-red-500">Logout</li></button>
+            </form>
         </ul>
     @endif
 </header>

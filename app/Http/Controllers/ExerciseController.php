@@ -38,4 +38,14 @@ class ExerciseController extends Controller
 
         return view('exercises', ["exercises" => $exercises]);
     }
+
+    public function readSingle(Exercise $exercise) {
+        return view("single-exercise", ["exercise" => $exercise]);
+    }
+
+    public function delete(Exercise $exercise) {
+        $exercise->delete();
+
+        return redirect("/exercises")->with('success', "Exercise deleted successfully!");
+    }
 }
