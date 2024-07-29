@@ -3,7 +3,7 @@
 
     @if (auth()->check())
         <ul class="flex flex-row">
-            <a href=""><li class="block m-2 cursor-pointer">Workouts</li></a>
+            <a href="/workouts"><li class="block m-2 cursor-pointer">Workouts</li></a>
             <a href="/exercises"><li class="block m-2 cursor-pointer">Exercises</li></a>
             
             <form action="/logout" method="post">

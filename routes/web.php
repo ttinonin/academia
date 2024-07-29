@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,8 @@ Route::post('/exercise', [ExerciseController::class, "create"])->middleware('mus
 Route::get('/exercises', [ExerciseController::class, "read"])->middleware('mustBeLoggedIn');
 Route::get('/exercise/{exercise:id}', [ExerciseController::class, "readSingle"])->middleware('mustBeLoggedIn');
 Route::delete('/exercise/{exercise:id}', [ExerciseController::class, "delete"])->middleware('mustBeLoggedIn');
+
+// Workout related routes
+Route::get('/create-workout', [WorkoutController::class, "showForm"]);
+Route::post('/workout', [WorkoutController::class, "create"]);
+Route::get('/workouts', [WorkoutController::class, "read"]);

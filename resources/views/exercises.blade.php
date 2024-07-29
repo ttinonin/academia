@@ -9,7 +9,7 @@
 
     @foreach ($exercises as $exercise)
         <a href="/exercise/{{ $exercise->id }}">
-            <div class="font-bold text-lg p-3 bg-zinc-500 my-3 rounded-lg cursor-pointer">
+            <div class="font-bold text-lg p-3 bg-slate-800 my-3 rounded-lg cursor-pointer">
                 {{ $exercise->name }}
             </div>
         </a>
