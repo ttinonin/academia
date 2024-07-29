@@ -34,7 +34,7 @@ class ExerciseController extends Controller
     }
 
     public function read() {
-        $exercises = Exercise::all();
+        $exercises = Exercise::orderBy("name", 'asc')->paginate(5);
 
         return view('exercises', ["exercises" => $exercises]);
     }

@@ -13,7 +13,7 @@
             @foreach ($workout->exercise()->limit(4)->get() as $exercise)
                 <p>{{ $exercise->name }}</p>
             @endforeach
-            ...
+            . . .
         </div>
     @endforeach
 </x-layout>
