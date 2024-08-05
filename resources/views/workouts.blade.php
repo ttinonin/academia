@@ -7,13 +7,15 @@
     </div>
 
     @foreach ($workouts as $workout)
-        <div class="bg-slate-800 p-2 shadow-md cursor-pointer rounded-lg my-3">
-            <h2 class="font-bold text-lg">{{ $workout->title }}</h2>
-    
-            @foreach ($workout->exercise()->limit(4)->get() as $exercise)
-                <p>{{ $exercise->name }}</p>
-            @endforeach
-            . . .
-        </div>
+        <a href="/workout/{{ $workout->id }}">
+            <div class="bg-slate-800 p-2 shadow-md cursor-pointer rounded-lg my-3">
+                <h2 class="font-bold text-lg">{{ $workout->title }}</h2>
+        
+                @foreach ($workout->exercise()->limit(4)->get() as $exercise)
+                    <p>{{ $exercise->name }}</p>
+                @endforeach
+                . . .
+            </div>
+        </a>
     @endforeach
 </x-layout>

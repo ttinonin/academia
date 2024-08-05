@@ -36,3 +36,7 @@ Route::delete('/exercise/{exercise:id}', [ExerciseController::class, "delete"])-
 Route::get('/create-workout', [WorkoutController::class, "showForm"]);
 Route::post('/workout', [WorkoutController::class, "create"]);
 Route::get('/workouts', [WorkoutController::class, "read"]);
+Route::get('/workout/{workout:id}', [WorkoutController::class, "readSingle"]);
+Route::get('/log-workout/{workout:id}', [WorkoutController::class, "showLogForm"]);
+Route::post('/log-workout/{workout:id}', [WorkoutController::class, "log"]);
+Route::get('/logs', [WorkoutController::class, "getLogs"]);
