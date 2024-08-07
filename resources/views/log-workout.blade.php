@@ -6,9 +6,9 @@
             <div class="mt-4">
                 <label for="volume">{{ $exercise->name }}</label>
                 <div id="volume" class="">
-                    <input type="number" id="reps_{{ str_replace(' ', '_', strtolower($exercise->name)) }}" class="rounded-lg bg-zinc-800 p-2 w-full mb-2" placeholder="Reps">
-                    <input type="number" id="load_{{ str_replace(' ', '_', strtolower($exercise->name)) }}" class="rounded-lg bg-zinc-800 p-2 w-full mb-2" placeholder="Load">
-                    <button type="button" onclick="addSet('{{ str_replace(' ', '_', strtolower($exercise->name)) }}')" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 w-full mb-2 rounded-md">Log Set</button>
+                    <input type="number" id="reps_{{ str_replace(' ', '_', strtolower($exercise->name)) }}" class="border bg-gray-100 rounded-md p-2 w-full mb-2" placeholder="Reps">
+                    <input type="number" id="load_{{ str_replace(' ', '_', strtolower($exercise->name)) }}" class="border bg-gray-100 rounded-md p-2 w-full mb-2" placeholder="Load">
+                    <button type="button" onclick="addSet('{{ str_replace(' ', '_', strtolower($exercise->name)) }}')" class="py-2 border rounded-md w-full">Log Set</button>
                 </div>
 
                 <div id="sets_{{ str_replace(' ', '_', strtolower($exercise->name)) }}">
@@ -20,7 +20,7 @@
         @endforeach
 
         <div class="mt-2">
-            <button type="submit" class="bg-green-500 hover:bg-green-600 p-2 px-6 rounded-md mt-4">Create</button>
+            <button type="submit" class="bg-purple-700 hover:bg-purple-700 font-semibold text-white px-4 py-2 w-full mb-2 rounded-md mt-4">Create</button>
         </div>
     </form>
 
