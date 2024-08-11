@@ -19,22 +19,19 @@ class WorkoutController extends Controller
     public function create(Request $request) {
         $incomingFields = $request->validate([
             "title" => ["required", "min:1"],
-            "exercises" => ["required", "min:1"]
+            "exercises" => ["required", "array"]
         ]);
-
-        $exerciseIds = explode(',', $incomingFields['exercises']);
 
         $workout = Workout::create([
             "title" => $incomingFields["title"],
             "created_by" => auth()->id()
         ]);
-        $exercises = Exercise::find($exerciseIds);
 
-        foreach($exercises as $exercise) {
-            $exercise->workout()->attach($workout->id);
-        }
+        $workout->exercise()->attach($incomingFields["exercises"]);
 
-        return redirect("/workouts")->with("success", "Exercise successfully created!");
+        return response()->json([
+            "workout_id" => $workout->id
+        ]);
     }
 
     public function read() {
