@@ -72,7 +72,7 @@ export default class WorkoutForm {
     }
 
     addExercise() {
-        if(!this.exercise || this.exercises.includes(this.exercise.value)) {
+        if(!this.exercise || this.exercises.includes(Number(this.exercise.value))) {
             return;
         }
 

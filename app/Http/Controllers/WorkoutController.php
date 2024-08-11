@@ -54,46 +54,6 @@ class WorkoutController extends Controller
         return view('log-workout', ["workout" => $workout]);
     }
 
-    private function processaSerie($serie) {
-        $pattern = '/\((\d+),\s*(\d+)\)/';
-        $matches = [];
-    
-        if (preg_match_all($pattern, trim($serie), $matches, PREG_SET_ORDER)) {
-            return $matches;
-        }
-    
-        return [];
-    }
-
-    private function organizaDados($matches) {
-        return array_map(function($match) {
-            return [
-                'reps' => (int)$match[1],
-                'load' => (int)$match[2],
-            ];
-        }, $matches);
-    }
-
-    private function processaDados($dados) {
-        $resultado = [];
-    
-        foreach ($dados as $chave => $valor) {
-            if ($valor !== null) {
-                $matches = $this->processaSerie($valor);
-                $resultado[$chave] = $this->organizaDados($matches);
-            } else {
-                $resultado[$chave] = [];
-            }
-        }
-    
-        return $resultado;
-    }
-
-    private function temParesNumericos($valor) {
-        $pattern = '/\(\d+,\s*\d+\)/';
-        return preg_match_all($pattern, $valor) > 0;
-    }
-
     public function log(Request $request, Workout $workout) {
         $incomingFields = $request->all();
 
