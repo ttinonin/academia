@@ -39,7 +39,7 @@ class UserController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/')->with('success', 'Welcome back! You have successfully logged in.');
+        return redirect('/workouts')->with('success', 'Welcome back! You have successfully logged in.');
     }
 
     public function create(Request $request) {
@@ -66,11 +66,15 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return redirect('/');
+        return redirect('/workouts');
     }
 
     public function logout() {
         auth()->logout();
         return redirect('/')->with('success', "You are now logged out!");
+    }
+
+    public function read(User $user) {
+        return view("profile", ["user" => $user]);
     }
 }

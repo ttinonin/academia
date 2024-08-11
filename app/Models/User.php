@@ -47,8 +47,4 @@ class User extends Authenticatable
     public function userInfo() {
         return $this->hasOne(UserInfo::class);
     }
-
-    public function log() {
-        return $this->belongsToMany(Log::class, "user_logs", "user_id", "log_id");
-    }
 }

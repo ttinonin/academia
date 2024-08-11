@@ -19,7 +19,8 @@ class WorkoutController extends Controller
     public function create(Request $request) {
         $incomingFields = $request->validate([
             "title" => ["required", "min:1"],
-            "exercises" => ["required", "array"]
+            "exercises" => ["required", "array"],
+            "exercises.*" => ["integer"]
         ]);
 
         $workout = Workout::create([
@@ -79,8 +80,6 @@ class WorkoutController extends Controller
                     "load" => $exercise['load'],
                     "workout_date" => date('Y-m-d')
                 ]);
-
-                $log->user()->attach(auth()->id());
             }
         }
 
@@ -88,7 +87,8 @@ class WorkoutController extends Controller
     }
 
     public function getLogs() {
-        $logs = User::find(auth()->id())->log;
+        $logs = Log::where("user_id", auth()->id())
+        ->get();
 
         return view('logs', ["logs" => $logs]);
     }

@@ -31,7 +31,9 @@
             </div>
 
             <input type="hidden" name="exercises" id="exercises_input">
-    
+
+            <div class="" id="response_log"></div>
+
             <button type="button" id="create-workout-button" class="bg-purple-700 text-white font-semibold hover:bg-purple-800 py-2 w-full rounded-md mt-2">Create</button>
         </div>
     </form>

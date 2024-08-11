@@ -22,7 +22,7 @@ class Log extends Model
     ];
 
     public function user() {
-        return $this->belongsToMany(User::class, "user_logs", "log_id", "user_id");
+        return $this->belongsTo(User::class, "user_id");
     }
 
     public function workout() {

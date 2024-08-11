@@ -13,6 +13,7 @@ export default class WorkoutForm {
         this.exercise_view = document.getElementById("exercises_view");
         this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         this.submit_button = document.getElementById("create-workout-button");
+        this.responseLog = document.getElementById("response_log");
 
         this.request = {};
         this.events();
@@ -61,12 +62,13 @@ export default class WorkoutForm {
             "exercises": this.exercises
         }
     
+        let result;
         try {
-            const result = await axios.post('/workout', this.request, { headers: { 'X-CSRF-TOKEN': this.csrfToken }  });
+            result = await axios.post('/workout', this.request, { headers: { 'X-CSRF-TOKEN': this.csrfToken }  });
         
             window.location.href = `/workout/${result.data.workout_id}`;
         } catch(error) {
-            // Set error modal
+            this.responseLog.innerHTML = Logs.errorLog(error.response.data.message);
         }
 
     }

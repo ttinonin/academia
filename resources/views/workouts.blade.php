@@ -8,7 +8,7 @@
 
     @foreach ($workouts as $workout)
         <a href="/workout/{{ $workout->id }}">
-            <div class="rounded-xl border bg-gray-100 p-2 cursor-pointer mt-2">
+            <div class="rounded-xl border bg-gray-100 p-3 cursor-pointer mt-2">
                 <h2 class="font-semibold text-lg">{{ $workout->title }}</h2>
         
                 @foreach ($workout->exercise()->limit(4)->get() as $exercise)
