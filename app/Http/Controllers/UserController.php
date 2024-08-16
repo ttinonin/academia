@@ -74,6 +74,31 @@ class UserController extends Controller
         return redirect('/')->with('success', "You are now logged out!");
     }
 
+    public function editForm() {
+        $user = auth()->user();
+
+        return view('edit-user', ["user" => $user]);
+    }
+
+    public function edit(User $user, Request $request) {
+        $incomingFields = $request->validate([
+            "username" => ["required", Rule::unique("users", "username")->ignore($user->id)],
+            "email" => ["required", "email", Rule::unique("users", "email")->ignore($user->id)],
+            "height" => "required|numeric",
+            "weight" => "required|numeric",
+        ]);
+
+        $user->username = $incomingFields["username"];
+        $user->email = $incomingFields["email"];
+        $user->userInfo->height = $incomingFields["height"];
+        $user->userInfo->weight = $incomingFields["weight"];
+
+        $user->userInfo->save();
+        $user->save();
+
+        return redirect('/profile/' . $user->id)->with('success', 'Profile edited successfuly!');
+    }
+
     public function read(User $user) {
         return view("profile", ["user" => $user]);
     }

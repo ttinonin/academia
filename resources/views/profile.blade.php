@@ -20,10 +20,13 @@
             <h2 class="font-semibold">Personal Information</h2>
             <p class="text-sm text-gray-400 mb-2">Only you can see these informations</p>
             
+            <p class="text-md text-gray-400">Email: {{$user->email }}</p>
             <p class="text-md text-gray-400">Height: {{ intval($user->userInfo->height) }} cm</p>
             <p class="text-md text-gray-400 mb-2">Weight: {{ $user->userInfo->weight }} kg</p>
             
-            <button class="bg-purple-700 w-full hover:bg-purple-800 font-semibold text-white py-2 rounded-md">Edit</button>
+            <a href="/edit-profile">
+                <button class="bg-purple-700 w-full hover:bg-purple-800 font-semibold text-white py-2 rounded-md">Edit</button>
+            </a>
         </div>
     </div>
     @endif

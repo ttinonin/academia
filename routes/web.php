@@ -25,6 +25,8 @@ Route::get('/register', [UserController::class, "showRegisterForm"]);
 Route::post('/register', [UserController::class, "create"]);
 Route::post('/logout', [UserController::class, "logout"])->middleware('mustBeLoggedIn');
 Route::get('/profile/{user:id}', [UserController::class, "read"]);
+Route::put('/profile/{user:id}', [UserController::class, "edit"])->middleware('can:update,user');
+Route::get('/edit-profile', [UserController::class, "editForm"]);
 
 // Exercises related routes
 Route::get('/create-exercise', [ExerciseController::class, "showCreateForm"])->middleware('mustBeLoggedIn');
